@@ -11,21 +11,18 @@ import org.springframework.stereotype.Repository;
 import com.javaweb.repository.DistrictRepository;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.repository.entity.DistrictEntity;
+import com.javaweb.utils.ConnectJDBCUtil;
 
 @Repository
-public class DistrictRepositoryImpl implements DistrictRepository{
-    static final String DB_URL = "jdbc:mysql://localhost:3306/estatebasic";
-	static final String USER = "root";
-	static final String PASS = "tung.2802";
+public class DistrictRepositoryImpl implements DistrictRepository {
 
     @Override
     public DistrictEntity findNameByID(Long id) {
-        // TODO Auto-generated method stub 
-        String sql = "SELECT d.name FROM district d WHERE d.id = " + id + ";" ;
+        String sql = "SELECT d.name FROM district d WHERE d.id = " + id + ";";
         DistrictEntity districtEntity = new DistrictEntity();
-            try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
+        try (Connection conn = ConnectJDBCUtil.getConnection();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 districtEntity.setName(rs.getString("name"));
             }
@@ -35,5 +32,5 @@ public class DistrictRepositoryImpl implements DistrictRepository{
         }
         return districtEntity;
     }
-    
+
 }

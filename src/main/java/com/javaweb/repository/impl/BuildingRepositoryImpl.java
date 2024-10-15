@@ -14,14 +14,12 @@ import org.springframework.stereotype.Repository;
 
 import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.entity.BuildingEntity;
+import com.javaweb.utils.ConnectJDBCUtil;
 import com.javaweb.utils.NumberUtil;
 import com.javaweb.utils.StringUtil;
 
 @Repository
 public class BuildingRepositoryImpl implements BuildingRepository {
-	static final String DB_URL = "jdbc:mysql://localhost:3306/estatebasic";
-	static final String USER = "root";
-	static final String PASS = "tung.2802";
 
 	public static void joinTable(Map<String, Object> params, List<String> typeCode, StringBuilder sql) {
 		String staffId = (String) params.get("staffId");
@@ -86,10 +84,10 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 
 		if (typeCode != null && typeCode.size() != 0) {
 			List<String> code = new ArrayList<>();
-			for ( String item : typeCode ) {
-				code.add( "'" + item + "'") ;
+			for (String item : typeCode) {
+				code.add("'" + item + "'");
 			}
-			where.append(" AND renttype.code IN (" + String.join(",", code) + ") ") ;
+			where.append(" AND renttype.code IN (" + String.join(",", code) + ") ");
 		}
 		where.append("\nGROUP BY b.id;");
 	}
@@ -108,7 +106,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 		sql.append(where);
 		System.out.println(sql);
 		List<BuildingEntity> res = new ArrayList<>();
-		try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		try (Connection conn = ConnectJDBCUtil.getConnection();
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(sql.toString());) {
 			while (rs.next()) {
