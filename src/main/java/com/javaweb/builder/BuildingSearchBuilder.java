@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingSearchBuilder {
-	private String name ;
+    private String name;
     private Long floorArea;
-	private String ward;
-	private String street;
-	private Long districtId;
+    private String ward;
+    private String street;
+    private Long districtId;
     private Integer numberOfBasement;
     private List<String> typeCode = new ArrayList<>();
-	private String managerName;
-	private String managerPhoneNumber;
-	private Long rentPriceFrom;
+    private String managerName;
+    private String managerPhoneNumber;
+    private Long rentPriceFrom;
     private Long rentPriceTo;
     private Long areaFrom;
     private Long areaTo;
     private Long staffId;
 
-    private BuildingSearchBuilder (Builder builder) {
+    private BuildingSearchBuilder(Builder builder) {
         this.name = builder.name;
         this.floorArea = builder.floorArea;
         this.ward = builder.ward;
@@ -92,7 +92,6 @@ public class BuildingSearchBuilder {
         return staffId;
     }
 
-
     public static class Builder {
         private String name;
         private Long floorArea;
@@ -108,60 +107,73 @@ public class BuildingSearchBuilder {
         private Long areaFrom;
         private Long areaTo;
         private Long staffId;
-        
-        public Builder setName (String name) {
+
+        public Builder setName(String name) {
             this.name = name;
             return this;
         }
-        public Builder setFloorArea (Long floorArea) {
-            this.floorArea = floorArea ;
+
+        public Builder setFloorArea(Long floorArea) {
+            this.floorArea = floorArea;
             return this;
         }
-        public Builder setWard (String ward) {
-            this.ward = ward ;
+
+        public Builder setWard(String ward) {
+            this.ward = ward;
             return this;
         }
-        public Builder setStreet (String street) {
+
+        public Builder setStreet(String street) {
             this.street = street;
             return this;
         }
-        public Builder setDistrictId ( Long districtId) {
-            this.districtId = districtId ;
+
+        public Builder setDistrictId(Long districtId) {
+            this.districtId = districtId;
             return this;
         }
-        public Builder setNumberOfBasement (Integer numberOfBasement) {
+
+        public Builder setNumberOfBasement(Integer numberOfBasement) {
             this.numberOfBasement = numberOfBasement;
             return this;
         }
-        public Builder setTypeCode ( List<String> typeCode) {
+
+        public Builder setTypeCode(List<String> typeCode) {
             this.typeCode = typeCode;
             return this;
         }
-        public Builder setManagerName ( String managerName) {
+
+        public Builder setManagerName(String managerName) {
             this.managerName = managerName;
             return this;
         }
-        public Builder setRentPriceFrom ( Long rentPriceFrom) {
+
+        public Builder setRentPriceFrom(Long rentPriceFrom) {
             this.rentPriceFrom = rentPriceFrom;
             return this;
         }
-        public Builder setManagerPhoneNumber (String managerPhoneNumber) {
+
+        public Builder setManagerPhoneNumber(String managerPhoneNumber) {
             this.managerPhoneNumber = managerPhoneNumber;
             return this;
         }
-        public Builder setRentPriceTo ( Long rentPriceTo) {
+
+        public Builder setRentPriceTo(Long rentPriceTo) {
             this.rentPriceTo = rentPriceTo;
             return this;
         }
-        public Builder setAreaFrom ( Long areaFrom) {
+
+        public Builder setAreaFrom(Long areaFrom) {
             this.areaFrom = areaFrom;
             return this;
         }
-        public Builder setAreaTo (Long areaTo) {
+
+        public Builder setAreaTo(Long areaTo) {
             this.areaTo = areaTo;
             return this;
         }
-        public Builder setStaffId ( Long staffId) {
+
+        public Builder setStaffId(Long staffId) {
             this.staffId = staffId;
             return this;
         }
@@ -169,5 +181,5 @@ public class BuildingSearchBuilder {
         public BuildingSearchBuilder build() {
             return new BuildingSearchBuilder(this);
         }
-    } 
+    }
 }
