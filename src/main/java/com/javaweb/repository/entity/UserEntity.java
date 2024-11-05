@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,9 +37,12 @@ public class UserEntity {
     @Column(name = "email")
     private String email;  
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<UserRoleEntity> userRoleEntities = new ArrayList<>();
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "userid", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "roleid", nullable = false)
+    )
+    private List<RoleEntity> roles = new ArrayList<>();
     public Long getId() {
         return id;
     }
@@ -84,14 +89,6 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<UserRoleEntity> getUserRoleEntities() {
-        return userRoleEntities;
-    }
-
-    public void setUserRoleEntities(List<UserRoleEntity> userRoleEntities) {
-        this.userRoleEntities = userRoleEntities;
     }
 
 }

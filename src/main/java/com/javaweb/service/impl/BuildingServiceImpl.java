@@ -11,6 +11,7 @@ import com.javaweb.converter.BuildingDTOConverter;
 import com.javaweb.converter.BuildingSearchBuilderConverter;
 import com.javaweb.model.BuildingDTO;
 import com.javaweb.repository.BuildingRepository;
+import com.javaweb.repository.custom.BuildingRepositoryCustom;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.service.BuildingService;
 

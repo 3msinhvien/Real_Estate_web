@@ -1,4 +1,4 @@
-package com.javaweb.repository.impl;
+package com.javaweb.repository.custom.impl;
 
 import org.springframework.stereotype.Repository;
 
