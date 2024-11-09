@@ -111,7 +111,9 @@ public class BuildingRepositoryImpl implements BuildingRepositoryCustom{
 		StringBuilder where = new StringBuilder("\nWHERE 1 = 1");
 		queryNormal(buildingSearchBuilder, where);
 		querySpecial(buildingSearchBuilder, where);
+		System.out.println(where);
 		sql.append(where);
+		System.out.println(sql);
 		//System.out.println(sql);
 		Query query = entityManager.createNativeQuery(sql.toString(), BuildingEntity.class);
 		return query.getResultList();
