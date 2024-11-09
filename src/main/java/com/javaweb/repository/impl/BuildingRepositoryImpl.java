@@ -48,7 +48,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 					Object value = item.get(buildingSearchBuilder);
 					if (value != null) {
 						if (item.getType().getName().equals("java.lang.Long")) {
-							where.append(" AND b." + fieldName + " = " + value);
+							where.append(" AND b." + fieldName.toLowerCase() + " = " + value);
 						} else if (item.getType().getName().equals("java.lang.String")) {
 							where.append(" AND b." + fieldName + " LIKE '%" + value + "%' ");
 						}
