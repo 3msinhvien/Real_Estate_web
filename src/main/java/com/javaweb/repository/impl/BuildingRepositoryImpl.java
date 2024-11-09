@@ -2,25 +2,19 @@ package com.javaweb.repository.impl;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaweb.builder.BuildingSearchBuilder;
 import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.utils.ConnectJDBCUtil;
-import com.javaweb.utils.NumberUtil;
-import com.javaweb.utils.StringUtil;
 
 @Repository
 public class BuildingRepositoryImpl implements BuildingRepository {
@@ -54,7 +48,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 					Object value = item.get(buildingSearchBuilder);
 					if (value != null) {
 						if (item.getType().getName().equals("java.lang.Long")) {
-							where.append("AND b." + fieldName + " = " + value);
+							where.append(" AND b." + fieldName + " = " + value);
 						} else if (item.getType().getName().equals("java.lang.String")) {
 							where.append(" AND b." + fieldName + " LIKE '%" + value + "%' ");
 						}
